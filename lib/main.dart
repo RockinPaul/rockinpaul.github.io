@@ -36,6 +36,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final availableWidth = MediaQuery.of(context).size.width - 80.0;
+    final availableHeight = MediaQuery.of(context).size.height - 80.0;
+
     return Scaffold(
       // appBar: AppBar(
       //   title: Text(widget.title),
@@ -48,79 +52,86 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 10.0),
-                    AutoSizeText(
-                      'Pavel Zarudnev',
-                      style: GoogleFonts.encodeSansSemiExpanded(
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.w700,
+                SizedBox(
+                  width: availableWidth * 2/3,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 10.0),
+                      AutoSizeText(
+                        'Pavel Zarudnev',
+                        style: GoogleFonts.encodeSansSemiExpanded(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 10.0),
-                    AutoSizeText(
-                      'Mobile developer',
-                      style: GoogleFonts.encodeSansSemiExpanded(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.w700,
+                      SizedBox(height: 10.0),
+                      AutoSizeText(
+                        'Mobile developer',
+                        style: GoogleFonts.encodeSansSemiExpanded(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 15.0),
-                    AutoSizeText(
-                      'Hilversum, Netherlands',
-                      style: GoogleFonts.encodeSansSemiExpanded(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w700,
+                      SizedBox(height: 15.0),
+                      AutoSizeText(
+                        'Hilversum, Netherlands',
+                        style: GoogleFonts.encodeSansSemiExpanded(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 30.0),
-                    Linkify(
-                      onOpen: (link) async {
-                        if (await canLaunch(link.url)) {
-                          await launch(link.url);
-                        } else {
-                          throw 'Could not launch $link';
-                        }
-                      },
-                      text: 'https://linkedin.com/in/pavelzarudnev',
-                      style: GoogleFonts.encodeSansSemiExpanded(fontSize: 18.0),
-                      // linkStyle: TextStyle(color: Colors.red),
-                    ),
-                    SizedBox(height: 15.0),
-                    Linkify(
-                      onOpen: (link) async {
-                        if (await canLaunch(link.url)) {
-                          await launch(link.url);
-                        } else {
-                          throw 'Could not launch $link';
-                        }
-                      },
-                      text: 'https://github.com/RockinPaul',
-                      style: GoogleFonts.encodeSansSemiExpanded(fontSize: 18.0),
-                      // linkStyle: TextStyle(color: Colors.red),
-                    ),
-                    SizedBox(height: 15.0),
-                    SelectableLinkify(
-                      onOpen: (link) async {
-                        if (await canLaunch(link.url)) {
-                          await launch(link.url);
-                        } else {
-                          throw 'Could not launch $link';
-                        }
-                      },
-                      text: 'me@pavelzarudnev.com',
-                      style: GoogleFonts.encodeSansSemiExpanded(fontSize: 18.0),
-                      // linkStyle: TextStyle(color: Colors.red),
-                    ),
-                  ],
+                      SizedBox(height: 30.0),
+                      Linkify(
+                        onOpen: (link) async {
+                          if (await canLaunch(link.url)) {
+                            await launch(link.url);
+                          } else {
+                            throw 'Could not launch $link';
+                          }
+                        },
+                        text: 'https://linkedin.com/in/pavelzarudnev',
+                        style: GoogleFonts.encodeSansSemiExpanded(fontSize: 18.0),
+                        // linkStyle: TextStyle(color: Colors.red),
+                      ),
+                      SizedBox(height: 15.0),
+                      Linkify(
+                        onOpen: (link) async {
+                          if (await canLaunch(link.url)) {
+                            await launch(link.url);
+                          } else {
+                            throw 'Could not launch $link';
+                          }
+                        },
+                        text: 'https://github.com/RockinPaul',
+                        style: GoogleFonts.encodeSansSemiExpanded(fontSize: 18.0),
+                        // linkStyle: TextStyle(color: Colors.red),
+                      ),
+                      SizedBox(height: 15.0),
+                      SelectableLinkify(
+                        onOpen: (link) async {
+                          if (await canLaunch(link.url)) {
+                            await launch(link.url);
+                          } else {
+                            throw 'Could not launch $link';
+                          }
+                        },
+                        text: 'me@pavelzarudnev.com',
+                        style: GoogleFonts.encodeSansSemiExpanded(fontSize: 18.0),
+                        // linkStyle: TextStyle(color: Colors.red),
+                      ),
+                    ],
+                  ),
                 ),
-                Image.asset(
-                  'assets/images/zarudnev_photo.jpg',
-                  fit: BoxFit.fitWidth,
-                  width: 240,
+                SizedBox(
+                  width: availableWidth / 3, // 1/3 of available width
                   height: 320,
+                  child: Image.asset(
+                    'assets/images/zarudnev_photo.jpg',
+                    fit: BoxFit.contain,
+                    width: 240,
+                    height: 320,
+                  ),
                 ),
               ],
             ),
