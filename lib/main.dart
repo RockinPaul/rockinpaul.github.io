@@ -47,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // appBar: AppBar(
       //   title: Text(widget.title),
       // ),
+      backgroundColor: Color(0xff303437),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.fromLTRB(
@@ -74,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             style: GoogleFonts.encodeSansSemiExpanded(
                               fontSize: 30.0,
                               fontWeight: FontWeight.w700,
+                              color: Color(0xffebebec),
                             ),
                           ),
                           SizedBox(height: 10.0),
@@ -82,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             style: GoogleFonts.encodeSansSemiExpanded(
                               fontSize: 25.0,
                               fontWeight: FontWeight.w700,
+                              color: Color(0xffebebec),
                             ),
                           ),
                           SizedBox(height: 15.0),
@@ -90,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             style: GoogleFonts.encodeSansSemiExpanded(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w700,
+                              color: Color(0xffebebec),
                             ),
                           ),
                           SizedBox(height: 60.0),
@@ -161,7 +165,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 child: Text(
                   "I'm a mobile developer with 7 years of experience creating mobile applications using Objective-C, Swift, and Flutter.\n\nMy responsibilities include working with a large number of technologies and libraries, team leading, code review, mentoring and delivery to the stores.\n\nIn the most recent years of my career, I've dedicated myself to Flutter, which I consider the best thing that has happened to mobile development for the past decade.",
-                  style: GoogleFonts.encodeSansSemiExpanded(fontSize: 18.0),
+                  style: GoogleFonts.encodeSansSemiExpanded(
+                    fontSize: 18.0,
+                    color: Color(0xffebebec),
+                  ),
                 ),
               ),
               Container(
@@ -176,6 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: GoogleFonts.encodeSansSemiExpanded(
                     fontSize: 25.0,
                     fontWeight: FontWeight.w700,
+                    color: Color(0xffebebec),
                   ),
                 ),
               ),
@@ -188,28 +196,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: Column(
-                          children: LineSplitter.split(
-                        'Mobile applications development\nTeam leading\nCode review\nAgile development\nMentoring',
-                      ).map((o) {
-                        return Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              "• ",
-                              style: TextStyle(fontSize: 18.0),
-                            ),
-                            Expanded(
-                              child: Text(
-                                o,
-                                style: GoogleFonts.encodeSansSemiExpanded(
-                                  fontSize: 18.0,
-                                ),
-                              ),
-                            ),
-                          ],
-                        );
-                      }).toList()),
+                      child: BulletedList(
+                        stringToSplit:
+                            'Mobile applications development\nTeam leading\nCode review\nAgile development\nMentoring',
+                      ),
                     ),
                   ],
                 ),
@@ -219,5 +209,49 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+}
+
+class BulletedList extends StatelessWidget {
+  // String divided by \n.
+  // For example: 'Team leading\nCode review\nAgile development\nMentoring'
+  final String stringToSplit;
+
+  const BulletedList({
+    Key? key,
+    required this.stringToSplit,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        children: LineSplitter.split(
+      stringToSplit,
+    ).map((o) {
+      return Padding(
+        padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              "• ",
+              style: TextStyle(
+                fontSize: 23.0,
+                color: Color(0xffebebec),
+              ),
+            ),
+            Expanded(
+              child: Text(
+                o,
+                style: GoogleFonts.encodeSansSemiExpanded(
+                  fontSize: 18.0,
+                  color: Color(0xffebebec),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }).toList());
   }
 }
