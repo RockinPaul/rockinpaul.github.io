@@ -32,115 +32,132 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
   @override
   Widget build(BuildContext context) {
-
-    final availableWidth = MediaQuery.of(context).size.width - 80.0;
-    final availableHeight = MediaQuery.of(context).size.height - 80.0;
+    final horizontalPadding = MediaQuery.of(context).size.width / 6;
+    final verticalPadding = horizontalPadding;
+    final availableWidth =
+        MediaQuery.of(context).size.width - horizontalPadding * 2;
+    final availableHeight =
+        MediaQuery.of(context).size.height - verticalPadding * 2;
 
     return Scaffold(
       // appBar: AppBar(
       //   title: Text(widget.title),
       // ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(40.0, 40.0, 40.0, 40.0),
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: availableWidth * 2/3,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 10.0),
-                      AutoSizeText(
-                        'Pavel Zarudnev',
-                        style: GoogleFonts.encodeSansSemiExpanded(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.w700,
-                        ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(
+            horizontalPadding,
+            verticalPadding,
+            horizontalPadding,
+            verticalPadding,
+          ),
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FittedBox(
+                    child: Container(
+                      width: availableWidth / 3,
+                      height: 320.0,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 10.0),
+                          Text(
+                            'Pavel Zarudnev',
+                            style: GoogleFonts.encodeSansSemiExpanded(
+                              fontSize: 28.0,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(height: 10.0),
+                          Text(
+                            'Mobile developer',
+                            style: GoogleFonts.encodeSansSemiExpanded(
+                              fontSize: 22.0,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(height: 15.0),
+                          Text(
+                            'Hilversum, Netherlands',
+                            style: GoogleFonts.encodeSansSemiExpanded(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(height: 30.0),
+                          Linkify(
+                            onOpen: (link) async {
+                              if (await canLaunch(link.url)) {
+                                await launch(link.url);
+                              } else {
+                                throw 'Could not launch $link';
+                              }
+                            },
+                            text: 'https://linkedin.com/in/pavelzarudnev',
+                            style:
+                                GoogleFonts.encodeSansSemiExpanded(fontSize: 16.0),
+                            // linkStyle: TextStyle(color: Colors.red),
+                          ),
+                          SizedBox(height: 15.0),
+                          Linkify(
+                            onOpen: (link) async {
+                              if (await canLaunch(link.url)) {
+                                await launch(link.url);
+                              } else {
+                                throw 'Could not launch $link';
+                              }
+                            },
+                            text: 'https://github.com/RockinPaul',
+                            style:
+                                GoogleFonts.encodeSansSemiExpanded(fontSize: 16.0),
+                            // linkStyle: TextStyle(color: Colors.red),
+                          ),
+                          SizedBox(height: 15.0),
+                          SelectableLinkify(
+                            onOpen: (link) async {
+                              if (await canLaunch(link.url)) {
+                                await launch(link.url);
+                              } else {
+                                throw 'Could not launch $link';
+                              }
+                            },
+                            text: 'me@pavelzarudnev.com',
+                            style:
+                                GoogleFonts.encodeSansSemiExpanded(fontSize: 16.0),
+                            // linkStyle: TextStyle(color: Colors.red),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 10.0),
-                      AutoSizeText(
-                        'Mobile developer',
-                        style: GoogleFonts.encodeSansSemiExpanded(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      SizedBox(height: 15.0),
-                      AutoSizeText(
-                        'Hilversum, Netherlands',
-                        style: GoogleFonts.encodeSansSemiExpanded(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      SizedBox(height: 30.0),
-                      Linkify(
-                        onOpen: (link) async {
-                          if (await canLaunch(link.url)) {
-                            await launch(link.url);
-                          } else {
-                            throw 'Could not launch $link';
-                          }
-                        },
-                        text: 'https://linkedin.com/in/pavelzarudnev',
-                        style: GoogleFonts.encodeSansSemiExpanded(fontSize: 18.0),
-                        // linkStyle: TextStyle(color: Colors.red),
-                      ),
-                      SizedBox(height: 15.0),
-                      Linkify(
-                        onOpen: (link) async {
-                          if (await canLaunch(link.url)) {
-                            await launch(link.url);
-                          } else {
-                            throw 'Could not launch $link';
-                          }
-                        },
-                        text: 'https://github.com/RockinPaul',
-                        style: GoogleFonts.encodeSansSemiExpanded(fontSize: 18.0),
-                        // linkStyle: TextStyle(color: Colors.red),
-                      ),
-                      SizedBox(height: 15.0),
-                      SelectableLinkify(
-                        onOpen: (link) async {
-                          if (await canLaunch(link.url)) {
-                            await launch(link.url);
-                          } else {
-                            throw 'Could not launch $link';
-                          }
-                        },
-                        text: 'me@pavelzarudnev.com',
-                        style: GoogleFonts.encodeSansSemiExpanded(fontSize: 18.0),
-                        // linkStyle: TextStyle(color: Colors.red),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: availableWidth / 3, // 1/3 of available width
-                  height: 320,
-                  child: Image.asset(
-                    'assets/images/zarudnev_photo.jpg',
-                    fit: BoxFit.contain,
-                    width: 240,
-                    height: 320,
+                  FittedBox(
+                    child: SizedBox(
+                      width: availableWidth * 2/3, // 2/3 of available width
+                      height: 320,
+                      child: Image.asset(
+                        'assets/images/zarudnev_photo.jpg',
+                        fit: BoxFit.contain,
+                        width: 240,
+                        height: 320,
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 30.0),
-            AutoSizeText(
-              "I'm a mobile developer with 7 years of experience creating mobile applications using Objective-C, Swift, and Flutter. My responsibilities include working with a large number of technologies and libraries, team leading, code review, mentoring and delivery to the stores.In the most recent years of my career, I've dedicated myself to Flutter, which I consider the best thing that has happened to mobile development for the past decade.",
-              style: GoogleFonts.encodeSansSemiExpanded(fontSize: 20.0),
-            ),
-          ],
+                ],
+              ),
+              SizedBox(height: 30.0),
+              AutoSizeText(
+                "I'm a mobile developer with 7 years of experience creating mobile applications using Objective-C, Swift, and Flutter. My responsibilities include working with a large number of technologies and libraries, team leading, code review, mentoring and delivery to the stores.In the most recent years of my career, I've dedicated myself to Flutter, which I consider the best thing that has happened to mobile development for the past decade.",
+                style: GoogleFonts.encodeSansSemiExpanded(fontSize: 20.0),
+              ),
+            ],
+          ),
         ),
       ),
     );
