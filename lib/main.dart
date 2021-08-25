@@ -201,6 +201,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             'Mobile applications development\nTeam leading\nCode review\nAgile development\nMentoring',
                       ),
                     ),
+                    Expanded(
+                      child: BulletedList(
+                        stringToSplit:
+                        'Mobile software architecture\nFlutter & Dart\nSwift & Objective-C\nSoftware distribution\nAnalytics',
+                      ),
+                    ),
                   ],
                 ),
               )
