@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -49,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Padding(
           padding: EdgeInsets.fromLTRB(
             horizontalPadding,
-            verticalPadding,
+            80,
             horizontalPadding,
             verticalPadding,
           ),
@@ -64,14 +66,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: availableWidth / 3,
                       height: 320.0,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           SizedBox(height: 10.0),
                           Text(
                             'Pavel Zarudnev',
                             style: GoogleFonts.encodeSansSemiExpanded(
-                              fontSize: 28.0,
+                              fontSize: 30.0,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -79,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Text(
                             'Mobile developer',
                             style: GoogleFonts.encodeSansSemiExpanded(
-                              fontSize: 22.0,
+                              fontSize: 25.0,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -87,11 +88,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           Text(
                             'Hilversum, Netherlands',
                             style: GoogleFonts.encodeSansSemiExpanded(
-                              fontSize: 16.0,
+                              fontSize: 18.0,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          SizedBox(height: 30.0),
+                          SizedBox(height: 60.0),
                           Linkify(
                             onOpen: (link) async {
                               if (await canLaunch(link.url)) {
@@ -101,8 +102,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               }
                             },
                             text: 'https://linkedin.com/in/pavelzarudnev',
-                            style:
-                                GoogleFonts.encodeSansSemiExpanded(fontSize: 16.0),
+                            style: GoogleFonts.encodeSansSemiExpanded(
+                                fontSize: 16.0),
                             // linkStyle: TextStyle(color: Colors.red),
                           ),
                           SizedBox(height: 15.0),
@@ -115,8 +116,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               }
                             },
                             text: 'https://github.com/RockinPaul',
-                            style:
-                                GoogleFonts.encodeSansSemiExpanded(fontSize: 16.0),
+                            style: GoogleFonts.encodeSansSemiExpanded(
+                              fontSize: 16.0,
+                            ),
                             // linkStyle: TextStyle(color: Colors.red),
                           ),
                           SizedBox(height: 15.0),
@@ -129,8 +131,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               }
                             },
                             text: 'me@pavelzarudnev.com',
-                            style:
-                                GoogleFonts.encodeSansSemiExpanded(fontSize: 16.0),
+                            style: GoogleFonts.encodeSansSemiExpanded(
+                              fontSize: 16.0,
+                            ),
                             // linkStyle: TextStyle(color: Colors.red),
                           ),
                         ],
@@ -139,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   FittedBox(
                     child: SizedBox(
-                      width: availableWidth * 2/3, // 2/3 of available width
+                      width: availableWidth * 2 / 3, // 2/3 of available width
                       height: 320,
                       child: Image.asset(
                         'assets/images/zarudnev_photo.jpg',
@@ -151,11 +154,66 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-              SizedBox(height: 30.0),
-              AutoSizeText(
-                "I'm a mobile developer with 7 years of experience creating mobile applications using Objective-C, Swift, and Flutter. My responsibilities include working with a large number of technologies and libraries, team leading, code review, mentoring and delivery to the stores.In the most recent years of my career, I've dedicated myself to Flutter, which I consider the best thing that has happened to mobile development for the past decade.",
-                style: GoogleFonts.encodeSansSemiExpanded(fontSize: 20.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 60.0,
+                  vertical: 30.0,
+                ),
+                child: Text(
+                  "I'm a mobile developer with 7 years of experience creating mobile applications using Objective-C, Swift, and Flutter.\n\nMy responsibilities include working with a large number of technologies and libraries, team leading, code review, mentoring and delivery to the stores.\n\nIn the most recent years of my career, I've dedicated myself to Flutter, which I consider the best thing that has happened to mobile development for the past decade.",
+                  style: GoogleFonts.encodeSansSemiExpanded(fontSize: 18.0),
+                ),
               ),
+              Container(
+                width: availableWidth,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 60.0,
+                  vertical: 30.0,
+                ),
+                child: Text(
+                  'My skills',
+                  textAlign: TextAlign.start,
+                  style: GoogleFonts.encodeSansSemiExpanded(
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              Container(
+                width: availableWidth,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 60.0,
+                  vertical: 10.0,
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                          children: LineSplitter.split(
+                        'Mobile applications development\nTeam leading\nCode review\nAgile development\nMentoring',
+                      ).map((o) {
+                        return Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              "• ",
+                              style: TextStyle(fontSize: 18.0),
+                            ),
+                            Expanded(
+                              child: Text(
+                                o,
+                                style: GoogleFonts.encodeSansSemiExpanded(
+                                  fontSize: 18.0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      }).toList()),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
