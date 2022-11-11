@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
@@ -40,13 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
     final verticalPadding = horizontalPadding;
     final availableWidth =
         MediaQuery.of(context).size.width - horizontalPadding * 2;
-    final availableHeight =
-        MediaQuery.of(context).size.height - verticalPadding * 2;
 
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(widget.title),
-      // ),
       backgroundColor: Color(0xff303437),
       body: SingleChildScrollView(
         child: Padding(
@@ -149,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: availableWidth * 2 / 3, // 2/3 of available width
                       height: 320,
                       child: Image.asset(
-                        'assets/images/zarudnev_photo.jpg',
+                        'assets/images/zarudnev_chairman.jpg',
                         fit: BoxFit.contain,
                         width: 240,
                         height: 320,
@@ -164,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   vertical: 30.0,
                 ),
                 child: Text(
-                  "I'm a mobile developer with 7 years of experience creating mobile applications using Objective-C, Swift, and Flutter.\n\nMy responsibilities include working with a large number of technologies and libraries, team leading, code review, mentoring and delivery to the stores.\n\nIn the most recent years of my career, I've dedicated myself to Flutter, which I consider the best thing that has happened to mobile development for the past decade.",
+                  "I'm a mobile developer with 9 years of experience creating mobile applications. My responsibilities consist of following a set of well-established general aspects in software development, working with variety of technologies and libraries, conducting a code review, and providing reliable delivery pipeline for testing and distribution. In the most recent years of my career, I dedicated myself to Flutter, which I consider the best thing that has happened to mobile development for the past decade.",
                   style: GoogleFonts.encodeSansSemiExpanded(
                     fontSize: 18.0,
                     color: Color(0xffebebec),
