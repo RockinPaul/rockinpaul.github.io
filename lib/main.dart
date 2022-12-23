@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 throw 'Could not launch $link';
                               }
                             },
-                            text: 'https://linkedin.com/in/pavelzarudnev',
+                            text: 'https://linkedin.com/in/zarudnev',
                             style: GoogleFonts.encodeSansSemiExpanded(
                                 fontSize: 16.0),
                             // linkStyle: TextStyle(color: Colors.red),
